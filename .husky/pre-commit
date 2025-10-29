@@ -1,0 +1,17 @@
+if [ $? -ne 0 ]; then
+  echo "Tests failed. Commit aborted."
+  exit 1
+fi
+
+npx prettier --check .
+RESET="\033[0m"
+if [ $? -ne 0 ]; then
+  RED="\033[0;31m"
+  echo ${RED}"Code format check failed. Run 'npx prettier --write .' to fix.${RESET}"
+  exit 1
+fi
+
+GREEN="\033[0;32m"
+echo "${GREEN}All checks passed!${RESET}"
+exit 0
+
