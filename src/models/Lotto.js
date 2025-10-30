@@ -10,9 +10,19 @@ class Lotto {
     if (numbers.length !== 6) {
       throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
     }
-  }
+    const hasDuplicates = new Set(numbers).size !== numbers.length;
+    if (hasDuplicates) {
+      throw new Error("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
+    }
 
-  // TODO: 추가 기능 구현
+    const isOutOfRange = numbers.some((n) => n < 1 || n > 45);
+    if (isOutOfRange) {
+      throw new Error("[ERROR] 로또 번호는 1~45 사이의 숫자여야 합니다.");
+    }
+  }
+  getNumbers() {
+    return this.#numbers;
+  }
 }
 
 export default Lotto;
