@@ -12,8 +12,8 @@ class InputView {
   async lottoNumbersInput() {
     const numbersInput =
       await Console.readLineAsync("당첨 번호를 입력해 주세요.\n");
-    const lottoNumbers = parseLottoNumbers(numbersInput);
-    return lottoNumbers;
+    const winningNumbers = parseLottoNumbers(numbersInput);
+    return winningNumbers;
   }
 
   async bonusNumberInput() {
