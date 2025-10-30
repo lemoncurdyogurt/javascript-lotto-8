@@ -46,7 +46,6 @@ class LottoController {
       this.outputView.printWinningResult(resultCount, yieldRate);
     } catch (error) {
       Console.print(error.message);
-      throw error;
     }
   }
 }
