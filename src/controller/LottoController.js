@@ -13,10 +13,10 @@ class LottoController {
     const purchaseAmount = await inputView.purchaseInput();
     const purchaseCount = getPurchaseNumber(purchaseAmount);
     Console.print("");
-
+    // 2. 구매한 로또 갯수 출력
     outputView.printPurchaseNumber(purchaseCount);
 
-    // 2. 구매한 로또 발행
+    // 3. 구매한 로또 발행
     const purchasedLottos = [];
     for (let i = 0; i < purchaseCount; i++) {
       purchasedLottos.push(generateLotto());
@@ -24,7 +24,7 @@ class LottoController {
     outputView.printLottoList(purchasedLottos);
     Console.print("");
 
-    // 3. 사용자 입력 당첨 번호
+    // 4. 사용자 입력 당첨 번호
     this.lottoNumbers = await inputView.lottoNumbersInput();
     Console.print("");
     this.bonusNumber = await inputView.bonusNumberInput();
