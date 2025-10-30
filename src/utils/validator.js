@@ -9,8 +9,14 @@ export function validateMinPurchase(purchaseAmount) {
   }
 }
 export function validateIsNumber(input) {
-  if (isNaN(input)) {
-    throw new Error(`[ERROR] 숫자가 아닌 값이 입력값으로 들어왔습니다.`);
+  if (Array.isArray(input)) {
+    if (!input.every((n) => typeof n === "number" && !isNaN(n))) {
+      throw new Error(`[ERROR] 배열에 숫자가 아닌 값이 포함되어 있습니다.`);
+    }
+  } else {
+    if (typeof input !== "number" || isNaN(input)) {
+      throw new Error(`[ERROR] 숫자가 아닌 값이 입력값으로 들어왔습니다.`);
+    }
   }
 }
 
