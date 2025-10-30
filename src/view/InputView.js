@@ -37,7 +37,7 @@ class InputView {
       await Console.readLineAsync("보너스 번호를 입력해 주세요.\n"),
     );
     validateIsNumber(bonusNumber);
-    validateLength(bonusNumber, 1, "보너스 번호");
+    validateLength([bonusNumber], 1, "보너스 번호");
     return bonusNumber;
   }
 }
