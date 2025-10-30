@@ -1,8 +1,12 @@
+import { Console } from "@woowacourse/mission-utils";
+
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
+
 import { getPurchaseNumber } from "../utils/getPurchaseNumber.js";
 import { generateLotto } from "../utils/generateLotto.js";
-import { Console } from "@woowacourse/mission-utils";
+import { getResultCount } from "../utils/getResultCount.js";
+import { calculateYieldRate } from "../utils/calculateYieldRate.js";
 
 class LottoController {
   constructor() {
@@ -31,6 +35,15 @@ class LottoController {
       Console.print("");
       this.bonusNumber = await this.inputView.bonusNumberInput();
       Console.print("");
+
+      // 5. 당첨 결과 집계
+      const resultCount = getResultCount(
+        purchasedLottos,
+        this.lottoNumbers,
+        this.bonusNumber,
+      );
+      const yieldRate = calculateYieldRate(resultCount, purchaseAmount);
+      this.outputView.printWinningResult(resultCount, yieldRate);
     } catch (error) {
       Console.print(error.message);
       throw error;
