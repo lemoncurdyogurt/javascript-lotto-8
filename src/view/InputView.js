@@ -1,11 +1,20 @@
 import { Console } from "@woowacourse/mission-utils";
 import { parseLottoNumbers } from "../utils/parseLottoNumbers.js";
+import {
+  validateIsNumber,
+  validateMinPurchase,
+  validatePurchaseUnit,
+} from "../utils/validator.js";
 
 class InputView {
   async purchaseInput() {
     const purchaseAmount = Number(
       await Console.readLineAsync("구입금액을 입력해 주세요.\n"),
     );
+    validateIsNumber(purchaseAmount);
+    validateMinPurchase(purchaseAmount);
+    validatePurchaseUnit(purchaseAmount);
+
     return purchaseAmount;
   }
 
