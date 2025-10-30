@@ -1,5 +1,5 @@
 import InputView from "../view/InputView.js";
-import OutputView from "../view/outputView.js";
+import OutputView from "../view/OutputView.js";
 import { getPurchaseNumber } from "../utils/getPurchaseNumber.js";
 import { generateLotto } from "../utils/generate-lotto.js";
 
