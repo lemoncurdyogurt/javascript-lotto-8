@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { parseLottoNumbers } from "../utils/parseLottoNumbers";
+import { parseLottoNumbers } from "../utils/parseLottoNumbers.js";
 
 class InputView {
   async purchaseInput() {
