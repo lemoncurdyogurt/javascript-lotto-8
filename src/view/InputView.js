@@ -4,7 +4,7 @@ import { parseLottoNumbers } from "../utils/parseLottoNumbers";
 class InputView {
   async purchaseInput() {
     const purchaseAmount = Number(
-      await Console.readLineAsync("구입금액을 입력해 주세요.\n")
+      await Console.readLineAsync("구입금액을 입력해 주세요.\n"),
     );
     return purchaseAmount;
   }
@@ -18,7 +18,7 @@ class InputView {
 
   async bonusNumberInput() {
     const bonusNumber = Number(
-      await Console.readLineAsync("보너스 번호를 입력해 주세요.\n")
+      await Console.readLineAsync("보너스 번호를 입력해 주세요.\n"),
     );
     return bonusNumber;
   }
