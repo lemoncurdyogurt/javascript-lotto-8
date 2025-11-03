@@ -1,0 +1,5 @@
+export const LOTTO_CONSTANTS = {
+  MIN_NUMBER: 1,
+  MAX_NUMBER: 45,
+  NUMBER_LENGTH: 6,
+};
