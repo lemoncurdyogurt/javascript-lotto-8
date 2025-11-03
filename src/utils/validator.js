@@ -1,39 +1,41 @@
+import { ERROR_MESSAGES } from "../constants/validationMessage";
+
 export function validatePurchaseUnit(purchaseAmount) {
   if (purchaseAmount % 1000 !== 0) {
-    throw new Error(`[ERROR] 구입 금액은 1000원 단위로 입력해야 합니다.`);
+    throw new Error(ERROR_MESSAGES.INVALID_UNIT);
   }
 }
 export function validateMinPurchase(purchaseAmount) {
   if (purchaseAmount < 1000) {
-    throw new Error(`[ERROR] 구입 금액은 1000원 이상으로 입력해야합니다.`);
+    throw new Error(ERROR_MESSAGES.INSUFFICIENT_AMOUNT);
   }
 }
 export function validateIsNumber(input) {
   if (Array.isArray(input)) {
     if (!input.every((n) => typeof n === "number" && !isNaN(n))) {
-      throw new Error(`[ERROR] 배열에 숫자가 아닌 값이 포함되어 있습니다.`);
+      throw new Error(ERROR_MESSAGES.INVALID_ARRAY_TYPE);
     }
   } else {
     if (typeof input !== "number" || isNaN(input)) {
-      throw new Error(`[ERROR] 숫자가 아닌 값이 입력값으로 들어왔습니다.`);
+      throw new Error(ERROR_MESSAGES.INVALID_NUMBER_TYPE);
     }
   }
 }
 
 export function validateLength(numbers, expectedLength, label = "당첨 번호") {
   if (numbers.length !== expectedLength) {
-    throw new Error(`[ERROR] ${label}는 ${expectedLength}개여야 합니다.`);
+    throw new Error(ERROR_MESSAGES.LENGTH_MISMATCH(label, expectedLength));
   }
 }
 
 export function validateRange(numbers) {
   if (numbers.some((n) => n < 1 || n > 45)) {
-    throw new Error("[ERROR] 번호는 1~45 사이여야 합니다.");
+    throw new Error(ERROR_MESSAGES.INVALID_RANGE);
   }
 }
 
 export function validateDuplicates(numbers) {
   if (new Set(numbers).size !== numbers.length) {
-    throw new Error("[ERROR] 번호가 중복될 수 없습니다.");
+    throw new Error(ERROR_MESSAGES.DUPLICATE_NUBMER);
   }
 }
