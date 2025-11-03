@@ -1,36 +1,37 @@
 import Lotto from "../src/models/Lotto.js";
+import { LOTTO_ERROR } from "../src/constants/lottoMessages.js";
 
-describe("로또 클래스 테스트", () => {
-  test("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.", () => {
-    expect(() => {
-      new Lotto([1, 2, 3, 4, 5, 6, 7]);
-    }).toThrow("[ERROR] 로또 번호는 6개여야 합니다.");
-  });
-
-  test("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.", () => {
-    expect(() => {
-      new Lotto([1, 2, 3, 4, 5, 5]);
-    }).toThrow("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
-  });
-
-  test("로또 번호가 숫자가 아니면 예외가 발생한다.", () => {
-    expect(() => new Lotto(["1", "a", "3", "4", "5", "6"])).toThrow(
-      "[ERROR] 로또 번호는 숫자여야 합니다.",
+describe("Lotto 클래스 테스트", () => {
+  test("로또 번호 개수가 6개가 아니면 예외 발생", () => {
+    expect(() => new Lotto([1, 2, 3, 4, 5, 6, 7])).toThrow(
+      LOTTO_ERROR.INVALID_LENGTH,
     );
   });
 
-  test("로또 번호가 1~45 범위를 벗어나면 예외가 발생한다.", () => {
+  test("로또 번호에 중복이 있으면 예외 발생", () => {
+    expect(() => new Lotto([1, 2, 3, 4, 5, 5])).toThrow(
+      LOTTO_ERROR.DUPLICATE_NUMBER,
+    );
+  });
+
+  test("로또 번호가 범위 밖이면 예외 발생", () => {
     expect(() => new Lotto([0, 2, 3, 4, 5, 6])).toThrow(
-      "[ERROR] 로또 번호는 1~45 사이의 숫자여야 합니다.",
+      LOTTO_ERROR.INVALID_RANGE,
     );
-
     expect(() => new Lotto([1, 2, 3, 4, 5, 46])).toThrow(
-      "[ERROR] 로또 번호는 1~45 사이의 숫자여야 합니다.",
+      LOTTO_ERROR.INVALID_RANGE,
     );
   });
 
-  test("올바른 번호 배열이 들어오면 정상적으로 생성된다.", () => {
-    const lotto = new Lotto([1, 2, 3, 4, 5, 6]);
-    expect(lotto.getNumbers()).toEqual([1, 2, 3, 4, 5, 6]);
+  test("로또 번호가 숫자가 아니면 예외 발생", () => {
+    expect(() => new Lotto([1, 2, "a", 4, 5, 6])).toThrow(
+      LOTTO_ERROR.INVALID_NUMBER_TYPE,
+    );
+  });
+
+  test("올바른 로또 번호 생성", () => {
+    const numbers = [1, 2, 3, 4, 5, 6];
+    const lotto = new Lotto(numbers);
+    expect(lotto.getNumbers()).toEqual(numbers);
   });
 });
