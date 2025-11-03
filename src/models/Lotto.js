@@ -10,7 +10,7 @@ class Lotto {
   }
 
   #validate(numbers) {
-    if (numbers.length !== NUMBER_LENGTH) {
+    if (numbers.length !== LOTTO_CONSTANTS.NUMBER_LENGTH) {
       throw new Error(LOTTO_ERROR.INVALID_LENGTH);
     }
     const hasDuplicates = new Set(numbers).size !== numbers.length;
@@ -18,7 +18,9 @@ class Lotto {
       throw new Error(LOTTO_ERROR.DUPLICATE_NUMBER);
     }
 
-    const isOutOfRange = numbers.some((n) => n < MIN_NUMBER || n > MAX_NUMBER);
+    const isOutOfRange = numbers.some(
+      (n) => n < LOTTO_CONSTANTS.MIN_NUMBER || n > LOTTO_CONSTANTS.MAX_NUMBER,
+    );
     if (isOutOfRange) {
       throw new Error(LOTTO_ERROR.INVALID_RANGE);
     }
