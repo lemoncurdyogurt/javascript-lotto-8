@@ -41,7 +41,7 @@ class InputView {
     validateIsNumber(bonusNumber);
     validateLength(
       [bonusNumber],
-      LOTTO_CONSTANTS.BOUNUS_NUMBER_LENGHT,
+      LOTTO_CONSTANTS.BONUS_NUMBER_LENGTH,
       "보너스 번호",
     );
     return bonusNumber;
