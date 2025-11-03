@@ -6,5 +6,5 @@ export const ERROR_MESSAGES = {
   LENGTH_MISMATCH: (label, expectedLength) =>
     `[ERROR] ${label}는 ${expectedLength}개여야 합니다.`,
   INVALID_RANGE: "[ERROR] 번호는 1~45 사이여야 합니다.",
-  DUPLICATE_NUBMER: "[ERROR]  번호가 중복될 수 없습니다.",
+  DUPLICATE_NUBMER: "[ERROR] 번호가 중복될 수 없습니다.",
 };

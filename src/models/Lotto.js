@@ -1,3 +1,5 @@
+import { ERROR_MESSAGES } from "../constants/validationMessage";
+
 class Lotto {
   #numbers;
 
