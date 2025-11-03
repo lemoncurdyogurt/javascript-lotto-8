@@ -1,5 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
+
 import { LOTTO_CONSTANTS } from "../constants/lottoConstants.js";
+import { INPUT_MESSAGES } from "../constants/inputMessages.js";
 
 import { parseLottoNumbers } from "../utils/parseLottoNumbers.js";
 import {
@@ -14,7 +16,7 @@ import {
 class InputView {
   async purchaseInput() {
     const purchaseAmount = Number(
-      await Console.readLineAsync("구입금액을 입력해 주세요.\n"),
+      await Console.readLineAsync(INPUT_MESSAGES.PURCHASE_AMOUNT),
     );
     validateIsNumber(purchaseAmount);
     validateMinPurchase(purchaseAmount);
@@ -24,8 +26,9 @@ class InputView {
   }
 
   async lottoNumbersInput() {
-    const numbersInput =
-      await Console.readLineAsync("당첨 번호를 입력해 주세요.\n");
+    const numbersInput = await Console.readLineAsync(
+      INPUT_MESSAGES.WINNING_NUMBERS,
+    );
     const winningNumbers = parseLottoNumbers(numbersInput);
     validateIsNumber(winningNumbers);
     validateLength(winningNumbers, LOTTO_CONSTANTS.NUMBER_LENGTH, "당첨 번호");
@@ -36,7 +39,7 @@ class InputView {
 
   async bonusNumberInput() {
     const bonusNumber = Number(
-      await Console.readLineAsync("보너스 번호를 입력해 주세요.\n"),
+      await Console.readLineAsync(INPUT_MESSAGES.BONUS_NUMBER),
     );
     validateIsNumber(bonusNumber);
     validateLength(
