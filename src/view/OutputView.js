@@ -1,9 +1,10 @@
 import { Console } from "@woowacourse/mission-utils";
 import { PRIZE_MONEY } from "../constants/prizeMoney.js";
+import { OUTPUT_MESSAGES } from "../constants/outputMessages.js";
 
 class OutputView {
   printPurchaseNumber(purchaseCount) {
-    Console.print(`${purchaseCount}개를 구매했습니다.`);
+    Console.print(OUTPUT_MESSAGES.PURCHASE_COUNT(purchaseCount));
   }
 
   printPurchasedLottos(lottos) {
@@ -12,22 +13,27 @@ class OutputView {
     });
   }
   printWinningResult(resultCount, yieldRate) {
-    Console.print("당첨 통계");
-    Console.print("---");
+    Console.print(OUTPUT_MESSAGES.STATISTICS_TITLE);
+    Console.print(OUTPUT_MESSAGES.STATISTICS_DIVIDER);
     Console.print(
-      `3개 일치 (${PRIZE_MONEY.match3.toLocaleString()}원) - ${resultCount.match3}개`,
+      OUTPUT_MESSAGES.MATCH_RESULT(3, PRIZE_MONEY.match3, resultCount.match3),
     );
     Console.print(
-      `4개 일치 (${PRIZE_MONEY.match4.toLocaleString()}원) - ${resultCount.match4}개`,
+      OUTPUT_MESSAGES.MATCH_RESULT(4, PRIZE_MONEY.match4, resultCount.match4),
     );
     Console.print(
-      `5개 일치 (${PRIZE_MONEY.match5.toLocaleString()}원) - ${resultCount.match5}개`,
+      OUTPUT_MESSAGES.MATCH_RESULT(5, PRIZE_MONEY.match5, resultCount.match5),
     );
     Console.print(
-      `5개 일치, 보너스 볼 일치 (${PRIZE_MONEY.match5Bonus.toLocaleString()}원) - ${resultCount.match5Bonus}개`,
+      OUTPUT_MESSAGES.MATCH_RESULT(
+        5,
+        PRIZE_MONEY.match5Bonus,
+        resultCount.match5Bonus,
+        true,
+      ),
     );
     Console.print(
-      `6개 일치 (${PRIZE_MONEY.match6.toLocaleString()}원) - ${resultCount.match6}개`,
+      OUTPUT_MESSAGES.MATCH_RESULT(6, PRIZE_MONEY.match6, resultCount.match6),
     );
 
     Console.print(`총 수익률은 ${yieldRate.toFixed(1)}%입니다.`);
